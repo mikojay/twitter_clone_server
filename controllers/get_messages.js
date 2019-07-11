@@ -4,6 +4,9 @@ module.exports = (req, res) => {
 	db_message.find({}).sort('-date').populate({
 		path: 'channel',
 		select: 'name'
+	}).populate({
+		path: 'author',
+		select: 'name email'
 	}).then((data) => {
 		res.send(data)
 	}).catch((err) => {

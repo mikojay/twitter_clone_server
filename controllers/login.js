@@ -1,5 +1,6 @@
 const db_user = require('../models/user')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 module.exports = (req, res) => {
 	console.log(req.body)
@@ -10,7 +11,11 @@ module.exports = (req, res) => {
 			bcrypt.compare(req.body.password, user.password, (err, match) => {
 				if (match) {
 					// 4. If passwords match, res OK
-					res.send('You are logged in')
+					let token = jwt.sign(user.toObject(), 'abc')
+					res.json({
+						message: 'You are logged in',
+						token: token
+					})
 				} else {
 					res.send('Sorry, invalid password')
 				}

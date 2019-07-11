@@ -3,8 +3,9 @@ const mongoose = require('mongoose')
 
 const db_message = db.model('message', {
 	author: {
-		type: String,
-		required: true
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'user',
+		required: [true, 'Message Author is required']
 	},
 	date: {
 		type: Date,

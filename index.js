@@ -9,6 +9,8 @@ app.get('/api/messages', require('./controllers/get_messages'))
 
 //channels
 app.post('/api/channels', require('./controllers/post_message'))
+app.get('/api/channels', require('./controllers/get_messages'))
+
 
 app.listen((process.env.PORT), (err) => {
 	if (err) {

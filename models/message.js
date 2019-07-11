@@ -1,10 +1,21 @@
 const db = require('../db')
 
 const db_message = db.model('message', {
-	author: String,
-	date: String,
-	body: String,
-	hashtag: String,
+	author: {
+		type: String,
+		required: true
+	},
+	date: {
+		type: Date,
+		default: Date.now()
+	},
+	body: {
+		type: String,
+		required: [true, 'Message Body is required']
+	},
+	hashtag: {
+		type: String,
+	}
 })
 
 module.exports = db_message

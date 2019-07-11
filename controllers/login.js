@@ -12,7 +12,7 @@ module.exports = (req, res) => {
 				if (match) {
 					// 4. If passwords match, res OK
 					let token = jwt.sign(user.toObject(), 'abc')
-					res.json({
+					res.status(200).json({
 						message: 'You are logged in',
 						token: token
 					})

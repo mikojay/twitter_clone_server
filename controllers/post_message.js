@@ -1,6 +1,5 @@
 const db_message = require('../models/message')
 
-
 module.exports = (req, res) => {
 	db_message.create({
 		author: 'Chang Chang',

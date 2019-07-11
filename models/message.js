@@ -1,4 +1,5 @@
 const db = require('../db')
+const mongoose = require('mongoose')
 
 const db_message = db.model('message', {
 	author: {
@@ -13,8 +14,9 @@ const db_message = db.model('message', {
 		type: String,
 		required: [true, 'Message Body is required']
 	},
-	hashtag: {
-		type: String,
+	channel: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'channel',
 	}
 })
 

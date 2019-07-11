@@ -1,8 +1,14 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 require('dotenv').config()
+
 const app = express()
 
 require('./db')
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 //messages
 app.post('/api/messages', require('./controllers/post_message'))
 app.get('/api/messages', require('./controllers/get_messages'))

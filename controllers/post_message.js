@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken')
 
 
 module.exports = (req, res) => {
-	
+
 	console.log('req.body', req.body)
-	jwt.verify(req.body.token, 'abc', (err, decoded) => {
+	jwt.verify(req.body.token, process.env.SECRET, (err, decoded) => {
 		if (decoded) {
 			console.log('decoded', decoded)
 			req.body.author = decoded._id

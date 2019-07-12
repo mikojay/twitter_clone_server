@@ -1,9 +1,19 @@
 const db_message = require('../models/message')
+const jwt = require('jsonwebtoken')
+
 
 module.exports = (req, res) => {
-	db_message.create(req.body).then((data) => {
-		res.send(data)
-	}).catch((err) => {
-		res.send(err)
+	
+	console.log('req.body', req.body)
+	jwt.verify(req.body.token, 'abc', (err, decoded) => {
+		if (decoded) {
+			console.log('decoded', decoded)
+			req.body.author = decoded._id
+			db_message.create(req.body).then((data) => {
+				res.send(data)
+			}).catch((err) => {
+				res.send(err)
+			})
+		}
 	})
 }

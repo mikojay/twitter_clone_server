@@ -3,9 +3,8 @@ const jwt = require('jsonwebtoken')
 
 
 module.exports = (req, res) => {
-
-	console.log('req.body', req.body)
-	jwt.verify(req.body.token, process.env.SECRET, (err, decoded) => {
+	let token = req.headers.authorization.split(' ')[1]
+	jwt.verify(token, process.env.SECRET, (err, decoded) => {
 		if (decoded) {
 			console.log('decoded', decoded)
 			req.body.author = decoded._id

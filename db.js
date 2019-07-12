@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
-const db = mongoose.connect('mongodb://localhost:27017/twitter', {useNewUrlParser: true}, (err) => {
-	if (err) {
+const db = mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true}, (err) => {
 		console.log('Error:', err)
 	} else {
 		console.log('Connected to MongoDB')

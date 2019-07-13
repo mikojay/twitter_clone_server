@@ -9,7 +9,7 @@ const db_message = db.model('message', {
 	},
 	date: {
 		type: Date,
-		default: Date.now()
+		default: Date.now
 	},
 	body: {
 		type: String,
